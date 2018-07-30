@@ -15,5 +15,36 @@ namespace this7\that;
  * 应用内调
  */
 class that {
+    /**
+     * 链接驱动
+     * @var [type]
+     */
+    protected static $link;
+    /**
+     * 初始APP核心
+     * @var [type]
+     */
+    protected static $app;
 
+    public function __construct($app) {
+        self::app = $app;
+    }
+    /**
+     * 单例调用
+     * @return [type] [description]
+     */
+    protected static function single() {
+        if (!self::$link) {
+            //self::$link = new base();
+        }
+        return self::$link;
+    }
+
+    public function __call($method, $params) {
+        return call_user_func_array([self::single(), $method], $params);
+    }
+
+    public static function __callStatic($name, $arguments) {
+        return call_user_func_array([static::single(), $name], $arguments);
+    }
 }
