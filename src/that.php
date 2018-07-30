@@ -34,6 +34,7 @@ class that {
      * @return [type] [description]
      */
     protected static function single() {
+        P(1);
         if (!self::$link) {
             //self::$link = new base();
         }
