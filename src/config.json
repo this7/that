@@ -1,0 +1,7 @@
+{
+    "defer":
+    {
+        "name": "延时加载",
+        "value": false
+    }
+}
