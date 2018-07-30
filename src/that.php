@@ -19,7 +19,7 @@ class that {
      * 链接驱动
      * @var [type]
      */
-    protected static $link;
+    protected static $link = [];
     /**
      * 初始APP核心
      * @var [type]
@@ -27,22 +27,27 @@ class that {
     protected static $app;
 
     public function __construct($app) {
-        self::app = $app;
+        self::$app = $app;
     }
+
     /**
      * 单例调用
      * @return [type] [description]
      */
-    protected static function single() {
-        P(1);
-        if (!self::$link) {
-            //self::$link = new base();
+    protected static function single($name) {
+        $class = 'server\controllers\\' . $name . md5($name);
+        if (!isset(self::$link[$name])) {
+            self::$link[$name] = new $class();
         }
-        return self::$link;
+
+        return self::$link[$name];
     }
 
     public function __call($method, $params) {
-        return call_user_func_array([self::single(), $method], $params);
+        $name = $params[0];
+        routes::setApiClass($method, $name, 2);
+        array_shift($params);
+        return call_user_func_array([self::single($method), $name], $params);
     }
 
     public static function __callStatic($name, $arguments) {
