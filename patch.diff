@@ -1,0 +1,15 @@
+diff --git a/composer.json b/composer.json
+index e509b66..9eff5e6 100644
+--- a/composer.json
++++ b/composer.json
+@@ -17,8 +17,8 @@
+     "require":
+     {
+         "php": ">=5.6.0",
+-        "this7/config": "3.0.*",
+-        "this7/routes": "3.0.*"
++        "this7/config": "3.*.*",
++        "this7/routes": "3.*.*"
+     },
+     "autoload":
+     {

@@ -17,8 +17,8 @@
     "require":
     {
         "php": ">=5.6.0",
-        "this7/config": "3.0.*",
-        "this7/routes": "3.0.*"
+        "this7/config": "3.*.*",
+        "this7/routes": "3.*.*"
     },
     "autoload":
     {
